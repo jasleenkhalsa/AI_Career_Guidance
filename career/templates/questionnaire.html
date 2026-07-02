@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white text-center">
+            <h2>Career Assessment Questionnaire</h2>
+            <p>Rate yourself from 1 (Strongly Disagree) to 5 (Strongly Agree)</p>
+        </div>
+
+        <div class="card-body">
+
+            <form action="/result/" method="POST">
+
+                {% csrf_token %}
+
+                <table class="table table-bordered table-hover">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Question</th>
+                            <th class="text-center">1</th>
+                            <th class="text-center">2</th>
+                            <th class="text-center">3</th>
+                            <th class="text-center">4</th>
+                            <th class="text-center">5</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr><td>I enjoy programming.</td><td><input type="radio" name="q1" value="1"></td><td><input type="radio" name="q1" value="2"></td><td><input type="radio" name="q1" value="3"></td><td><input type="radio" name="q1" value="4"></td><td><input type="radio" name="q1" value="5" required></td></tr>
+
+                        <tr><td>I like solving mathematical problems.</td><td><input type="radio" name="q2" value="1"></td><td><input type="radio" name="q2" value="2"></td><td><input type="radio" name="q2" value="3"></td><td><input type="radio" name="q2" value="4"></td><td><input type="radio" name="q2" value="5" required></td></tr>
+
+                        <tr><td>I enjoy analyzing data.</td><td><input type="radio" name="q3" value="1"></td><td><input type="radio" name="q3" value="2"></td><td><input type="radio" name="q3" value="3"></td><td><input type="radio" name="q3" value="4"></td><td><input type="radio" name="q3" value="5" required></td></tr>
+
+                        <tr><td>I like working with computers.</td><td><input type="radio" name="q4" value="1"></td><td><input type="radio" name="q4" value="2"></td><td><input type="radio" name="q4" value="3"></td><td><input type="radio" name="q4" value="4"></td><td><input type="radio" name="q4" value="5" required></td></tr>
+
+                        <tr><td>I enjoy teamwork.</td><td><input type="radio" name="q5" value="1"></td><td><input type="radio" name="q5" value="2"></td><td><input type="radio" name="q5" value="3"></td><td><input type="radio" name="q5" value="4"></td><td><input type="radio" name="q5" value="5" required></td></tr>
+
+                        <tr><td>I have leadership qualities.</td><td><input type="radio" name="q6" value="1"></td><td><input type="radio" name="q6" value="2"></td><td><input type="radio" name="q6" value="3"></td><td><input type="radio" name="q6" value="4"></td><td><input type="radio" name="q6" value="5" required></td></tr>
+
+                        <tr><td>I like helping people.</td><td><input type="radio" name="q7" value="1"></td><td><input type="radio" name="q7" value="2"></td><td><input type="radio" name="q7" value="3"></td><td><input type="radio" name="q7" value="4"></td><td><input type="radio" name="q7" value="5" required></td></tr>
+
+                        <tr><td>I enjoy public speaking.</td><td><input type="radio" name="q8" value="1"></td><td><input type="radio" name="q8" value="2"></td><td><input type="radio" name="q8" value="3"></td><td><input type="radio" name="q8" value="4"></td><td><input type="radio" name="q8" value="5" required></td></tr>
+
+                        <tr><td>I like designing websites.</td><td><input type="radio" name="q9" value="1"></td><td><input type="radio" name="q9" value="2"></td><td><input type="radio" name="q9" value="3"></td><td><input type="radio" name="q9" value="4"></td><td><input type="radio" name="q9" value="5" required></td></tr>
+
+                        <tr><td>I enjoy drawing or designing.</td><td><input type="radio" name="q10" value="1"></td><td><input type="radio" name="q10" value="2"></td><td><input type="radio" name="q10" value="3"></td><td><input type="radio" name="q10" value="4"></td><td><input type="radio" name="q10" value="5" required></td></tr>
+
+                        <tr><td>I enjoy learning new technologies.</td><td><input type="radio" name="q11" value="1"></td><td><input type="radio" name="q11" value="2"></td><td><input type="radio" name="q11" value="3"></td><td><input type="radio" name="q11" value="4"></td><td><input type="radio" name="q11" value="5" required></td></tr>
+
+                        <tr><td>I enjoy reading books.</td><td><input type="radio" name="q12" value="1"></td><td><input type="radio" name="q12" value="2"></td><td><input type="radio" name="q12" value="3"></td><td><input type="radio" name="q12" value="4"></td><td><input type="radio" name="q12" value="5" required></td></tr>
+
+                        <tr><td>I enjoy science subjects.</td><td><input type="radio" name="q13" value="1"></td><td><input type="radio" name="q13" value="2"></td><td><input type="radio" name="q13" value="3"></td><td><input type="radio" name="q13" value="4"></td><td><input type="radio" name="q13" value="5" required></td></tr>
+
+                        <tr><td>I enjoy business studies.</td><td><input type="radio" name="q14" value="1"></td><td><input type="radio" name="q14" value="2"></td><td><input type="radio" name="q14" value="3"></td><td><input type="radio" name="q14" value="4"></td><td><input type="radio" name="q14" value="5" required></td></tr>
+
+                        <tr><td>I enjoy accounting.</td><td><input type="radio" name="q15" value="1"></td><td><input type="radio" name="q15" value="2"></td><td><input type="radio" name="q15" value="3"></td><td><input type="radio" name="q15" value="4"></td><td><input type="radio" name="q15" value="5" required></td></tr>
+
+                        <tr><td>I enjoy biology.</td><td><input type="radio" name="q16" value="1"></td><td><input type="radio" name="q16" value="2"></td><td><input type="radio" name="q16" value="3"></td><td><input type="radio" name="q16" value="4"></td><td><input type="radio" name="q16" value="5" required></td></tr>
+
+                        <tr><td>I enjoy chemistry.</td><td><input type="radio" name="q17" value="1"></td><td><input type="radio" name="q17" value="2"></td><td><input type="radio" name="q17" value="3"></td><td><input type="radio" name="q17" value="4"></td><td><input type="radio" name="q17" value="5" required></td></tr>
+
+                        <tr><td>I enjoy physics.</td><td><input type="radio" name="q18" value="1"></td><td><input type="radio" name="q18" value="2"></td><td><input type="radio" name="q18" value="3"></td><td><input type="radio" name="q18" value="4"></td><td><input type="radio" name="q18" value="5" required></td></tr>
+
+                        <tr><td>I enjoy teaching others.</td><td><input type="radio" name="q19" value="1"></td><td><input type="radio" name="q19" value="2"></td><td><input type="radio" name="q19" value="3"></td><td><input type="radio" name="q19" value="4"></td><td><input type="radio" name="q19" value="5" required></td></tr>
+
+                        <tr><td>I like managing projects.</td><td><input type="radio" name="q20" value="1"></td><td><input type="radio" name="q20" value="2"></td><td><input type="radio" name="q20" value="3"></td><td><input type="radio" name="q20" value="4"></td><td><input type="radio" name="q20" value="5" required></td></tr>
+
+                        <tr><td>I enjoy creative writing.</td><td><input type="radio" name="q21" value="1"></td><td><input type="radio" name="q21" value="2"></td><td><input type="radio" name="q21" value="3"></td><td><input type="radio" name="q21" value="4"></td><td><input type="radio" name="q21" value="5" required></td></tr>
+
+                        <tr><td>I like solving logical puzzles.</td><td><input type="radio" name="q22" value="1"></td><td><input type="radio" name="q22" value="2"></td><td><input type="radio" name="q22" value="3"></td><td><input type="radio" name="q22" value="4"></td><td><input type="radio" name="q22" value="5" required></td></tr>
+
+                        <tr><td>I enjoy mobile app development.</td><td><input type="radio" name="q23" value="1"></td><td><input type="radio" name="q23" value="2"></td><td><input type="radio" name="q23" value="3"></td><td><input type="radio" name="q23" value="4"></td><td><input type="radio" name="q23" value="5" required></td></tr>
+
+                        <tr><td>I enjoy cybersecurity topics.</td><td><input type="radio" name="q24" value="1"></td><td><input type="radio" name="q24" value="2"></td><td><input type="radio" name="q24" value="3"></td><td><input type="radio" name="q24" value="4"></td><td><input type="radio" name="q24" value="5" required></td></tr>
+
+                        <tr><td>I enjoy Artificial Intelligence.</td><td><input type="radio" name="q25" value="1"></td><td><input type="radio" name="q25" value="2"></td><td><input type="radio" name="q25" value="3"></td><td><input type="radio" name="q25" value="4"></td><td><input type="radio" name="q25" value="5" required></td></tr>
+
+                        <tr><td>I like making decisions.</td><td><input type="radio" name="q26" value="1"></td><td><input type="radio" name="q26" value="2"></td><td><input type="radio" name="q26" value="3"></td><td><input type="radio" name="q26" value="4"></td><td><input type="radio" name="q26" value="5" required></td></tr>
+
+                        <tr><td>I like organizing events.</td><td><input type="radio" name="q27" value="1"></td><td><input type="radio" name="q27" value="2"></td><td><input type="radio" name="q27" value="3"></td><td><input type="radio" name="q27" value="4"></td><td><input type="radio" name="q27" value="5" required></td></tr>
+
+                        <tr><td>I enjoy working independently.</td><td><input type="radio" name="q28" value="1"></td><td><input type="radio" name="q28" value="2"></td><td><input type="radio" name="q28" value="3"></td><td><input type="radio" name="q28" value="4"></td><td><input type="radio" name="q28" value="5" required></td></tr>
+
+                        <tr><td>I like communicating with people.</td><td><input type="radio" name="q29" value="1"></td><td><input type="radio" name="q29" value="2"></td><td><input type="radio" name="q29" value="3"></td><td><input type="radio" name="q29" value="4"></td><td><input type="radio" name="q29" value="5" required></td></tr>
+
+                        <tr><td>I am eager to learn continuously.</td><td><input type="radio" name="q30" value="1"></td><td><input type="radio" name="q30" value="2"></td><td><input type="radio" name="q30" value="3"></td><td><input type="radio" name="q30" value="4"></td><td><input type="radio" name="q30" value="5" required></td></tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="text-center mt-4">
+
+                    <button class="btn btn-success btn-lg" type="submit">
+                        Submit Assessment
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

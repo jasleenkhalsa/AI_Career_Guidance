@@ -1,0 +1,473 @@
+/* =========================================
+   AI Personalized Career Guidance System
+   style.css
+========================================= */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    color:#333;
+}
+
+/* ==========================
+        NAVBAR
+========================== */
+
+.navbar{
+    background:#0d6efd !important;
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+.navbar-brand{
+    font-size:24px;
+    font-weight:700;
+}
+
+.nav-link{
+    color:white !important;
+    margin-left:12px;
+    transition:.3s;
+}
+
+.nav-link:hover{
+    color:#ffe082 !important;
+}
+
+/* ==========================
+        HERO SECTION
+========================== */
+
+.hero{
+
+    background:linear-gradient(135deg,#0d6efd,#3f8efc);
+
+    color:white;
+
+    padding:90px 30px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    margin-top:30px;
+}
+
+.hero h1{
+
+    font-size:48px;
+
+    font-weight:bold;
+}
+
+.hero p{
+
+    font-size:20px;
+
+    margin-top:20px;
+}
+
+.hero .btn{
+
+    margin-top:30px;
+
+    padding:12px 30px;
+}
+
+/* ==========================
+        CARD
+========================== */
+
+.card{
+
+    border:none;
+
+    border-radius:15px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+}
+
+.card-header{
+
+    border-radius:15px 15px 0 0 !important;
+
+    font-size:24px;
+
+    font-weight:600;
+}
+
+/* ==========================
+        BUTTONS
+========================== */
+
+.btn{
+
+    border-radius:10px;
+
+    transition:.3s;
+}
+
+.btn:hover{
+
+    transform:scale(1.03);
+}
+
+/* ==========================
+        FORM
+========================== */
+
+.form-control,
+.form-select{
+
+    border-radius:10px;
+
+    padding:10px;
+
+    border:1px solid #ced4da;
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:#0d6efd;
+
+    box-shadow:0 0 8px rgba(13,110,253,.2);
+}
+
+label{
+
+    font-weight:500;
+}
+
+/* ==========================
+        TABLE
+========================== */
+
+table{
+
+    background:white;
+}
+
+table th{
+
+    text-align:center;
+}
+
+table td{
+
+    vertical-align:middle;
+}
+
+table tr:hover{
+
+    background:#eef6ff;
+}
+
+/* ==========================
+        PROGRESS BAR
+========================== */
+
+.progress{
+
+    height:30px;
+
+    border-radius:20px;
+}
+
+.progress-bar{
+
+    font-weight:bold;
+
+    font-size:16px;
+}
+
+/* ==========================
+        LIST GROUP
+========================== */
+
+.list-group-item{
+
+    transition:.3s;
+}
+
+.list-group-item:hover{
+
+    background:#dbeafe;
+
+    padding-left:20px;
+}
+
+/* ==========================
+        FOOTER
+========================== */
+
+footer{
+
+    background:#212529;
+
+    color:white;
+
+    margin-top:60px;
+
+    padding:25px;
+
+    text-align:center;
+}
+
+/* ==========================
+        CONTACT PAGE
+========================== */
+
+textarea{
+
+    resize:none;
+}
+
+/* ==========================
+        LOGIN
+========================== */
+
+.login-card{
+
+    margin-top:70px;
+}
+
+/* ==========================
+        REGISTER
+========================== */
+
+.register-card{
+
+    margin-top:50px;
+}
+
+/* ==========================
+        RESULT PAGE
+========================== */
+
+.result-title{
+
+    color:#198754;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    margin-bottom:20px;
+}
+
+/* ==========================
+        BADGES
+========================== */
+
+.badge{
+
+    padding:8px 15px;
+
+    font-size:14px;
+}
+
+/* ==========================
+        ALERT
+========================== */
+
+.alert{
+
+    border-radius:10px;
+}
+
+/* ==========================
+        INPUT RADIO
+========================== */
+
+input[type=radio]{
+
+    transform:scale(1.2);
+
+    cursor:pointer;
+}
+
+/* ==========================
+        SHADOW
+========================== */
+
+.shadow-custom{
+
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+
+/* ==========================
+        SECTION TITLE
+========================== */
+
+.section-title{
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    color:#0d6efd;
+
+    margin-bottom:25px;
+
+    text-align:center;
+}
+
+/* ==========================
+        FEATURE CARD
+========================== */
+
+.feature-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.feature-card:hover{
+
+    background:#0d6efd;
+
+    color:white;
+
+    transform:translateY(-8px);
+}
+
+/* ==========================
+        ICON
+========================== */
+
+.icon{
+
+    font-size:50px;
+
+    margin-bottom:15px;
+
+    color:#0d6efd;
+}
+
+/* ==========================
+        ANIMATION
+========================== */
+
+.fade-in{
+
+    animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+        RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:34px;
+
+}
+
+.hero p{
+
+font-size:17px;
+
+}
+
+.navbar-brand{
+
+font-size:20px;
+
+}
+
+.card-header{
+
+font-size:20px;
+
+}
+
+.section-title{
+
+font-size:28px;
+
+}
+
+}
+
+/* ==========================
+        SMALL DEVICES
+========================== */
+
+@media(max-width:576px){
+
+.hero{
+
+padding:50px 20px;
+
+}
+
+.hero h1{
+
+font-size:28px;
+
+}
+
+.hero p{
+
+font-size:15px;
+
+}
+
+.btn{
+
+width:100%;
+
+}
+
+table{
+
+font-size:13px;
+
+}
+
+}
