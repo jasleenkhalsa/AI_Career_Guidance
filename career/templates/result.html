@@ -4,111 +4,93 @@
 
 <div class="container mt-5">
 
-    <div class="card shadow">
+<div class="card shadow">
 
-        <div class="card-header bg-success text-white text-center">
+<div class="card-header bg-success text-white text-center">
 
-            <h2>Your Career Recommendation</h2>
+<h2>🎯 AI Career Recommendation</h2>
 
-        </div>
+</div>
 
-        <div class="card-body">
+<div class="card-body">
 
-            <div class="text-center mb-4">
+<h3 class="text-center">
 
-                <h3 class="text-primary">
+Recommended Domain
 
-                    🎯 Software Engineer
+</h3>
 
-                </h3>
+<h2 class="text-center text-primary">
 
-                <p class="lead">
+{{ category }}
 
-                    Based on your assessment, this career is the best match for you.
+</h2>
 
-                </p>
+<h4 class="text-center">
 
-            </div>
+Match Score
 
-            <hr>
+{{ confidence }}%
 
-            <h4>💡 Skills You Should Learn</h4>
+</h4>
 
-            <ul class="list-group mb-4">
+<hr>
 
-                <li class="list-group-item">Python</li>
+<h4>🏆 Top Careers</h4>
 
-                <li class="list-group-item">Java</li>
+<ul>
 
-                <li class="list-group-item">SQL</li>
+{% for item in career.top_careers %}
 
-                <li class="list-group-item">Data Structures & Algorithms</li>
+<li>{{ item }}</li>
 
-                <li class="list-group-item">Git & GitHub</li>
+{% endfor %}
 
-                <li class="list-group-item">Problem Solving</li>
+</ul>
 
-            </ul>
+<hr>
 
-            <h4>📚 Recommended Courses</h4>
+<h4>💻 Skills Required</h4>
 
-            <ul class="list-group mb-4">
+<ul>
 
-                <li class="list-group-item">Python Programming</li>
+{% for skill in career.skills %}
 
-                <li class="list-group-item">Web Development</li>
+<li>{{ skill }}</li>
 
-                <li class="list-group-item">Database Management System</li>
+{% endfor %}
 
-                <li class="list-group-item">Object Oriented Programming</li>
+</ul>
 
-                <li class="list-group-item">Machine Learning Basics</li>
+<hr>
 
-            </ul>
+<h4>📚 Recommended Courses</h4>
 
-            <h4>💼 Future Job Roles</h4>
+<ul>
 
-            <ul class="list-group mb-4">
+{% for course in career.courses %}
 
-                <li class="list-group-item">Software Engineer</li>
+<li>{{ course }}</li>
 
-                <li class="list-group-item">Backend Developer</li>
+{% endfor %}
 
-                <li class="list-group-item">Full Stack Developer</li>
+</ul>
 
-                <li class="list-group-item">Python Developer</li>
+<hr>
 
-                <li class="list-group-item">AI Engineer</li>
+<h4>💰 Average Salary</h4>
 
-            </ul>
+<p>{{ career.salary }}</p>
 
-            <h4>📈 Career Match</h4>
+<hr>
 
-            <div class="progress mb-4" style="height:30px;">
+<h4>🚀 Future Scope</h4>
 
-                <div class="progress-bar bg-success"
-                     role="progressbar"
-                     style="width:90%;">
+<p>{{ career.future_scope }}</p>
 
-                    90%
+</div>
 
-                </div>
-
-            </div>
-
-            <div class="text-center">
-
-                <a href="/questionnaire/" class="btn btn-primary">
-
-                    Take Assessment Again
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </div>
 

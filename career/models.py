@@ -82,3 +82,26 @@ class CareerRecommendation(models.Model):
 
     def __str__(self):
         return self.career
+
+
+class CareerInfo(models.Model):
+
+    category = models.CharField(max_length=100)
+
+    career_name = models.CharField(max_length=100)
+
+    description = models.TextField()
+
+    skills = models.TextField()
+
+    courses = models.TextField()
+
+    jobs = models.TextField()
+
+    salary = models.CharField(max_length=100)
+
+    future_scope = models.TextField()
+
+    def __str__(self):
+
+        return self.career_name
