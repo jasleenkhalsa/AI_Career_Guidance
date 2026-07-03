@@ -1,97 +1,439 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="container my-5">
 
-<div class="card shadow">
+    <div class="card shadow-lg border-0 rounded-4">
 
-<div class="card-header bg-success text-white text-center">
+        <div class="card-header bg-primary text-white text-center py-4">
+            <h2>
+                <i class="bi bi-cpu-fill"></i>
+                AI Personalized Career Report
+            </h2>
+        </div>
 
-<h2>🎯 AI Career Recommendation</h2>
+        <div class="card-body">
+
+            <!-- Student Details -->
+
+            <div class="row mb-4">
+
+                <div class="col-md-6">
+
+                    <h5>
+                        <i class="bi bi-person-circle"></i>
+                        Student
+                    </h5>
+
+                    <p>{{ request.session.student }}</p>
+
+                </div>
+
+                <div class="col-md-6 text-end">
+
+                    <h5>
+                        <i class="bi bi-calendar-event"></i>
+                        Assessment Date
+                    </h5>
+
+                    <p>{% now "d M Y" %}</p>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <!-- Prediction -->
+
+            <div class="text-center">
+
+                <h5 class="text-primary fw-bold">
+
+                    Recommended Career Domain
+
+                </h5>
+
+                <h1 class="display-5 fw-bold text-success">
+
+                    {{ category }}
+
+                </h1>
+
+            </div>
+
+            <br>
+
+            <!-- Confidence -->
+
+            <h5>AI Confidence</h5>
+
+            <div class="progress mb-4" style="height:30px;">
+
+                <div
+                    class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+                    role="progressbar"
+                    style="width: {{ confidence }}%;">
+
+                    {{ confidence }}%
+
+                </div>
+
+            </div>
+
+            <!-- Top Careers + Skills -->
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-body">
+
+                            <h4>
+
+                                🏆 Top Career Suggestions
+
+                            </h4>
+
+                            <ul class="list-group list-group-flush">
+
+                                {% for item in career.top_careers %}
+
+                                <li class="list-group-item">
+
+                                    {{ forloop.counter }}.
+                                    {{ item }}
+
+                                </li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-body">
+
+                            <h4>
+
+                                💻 Skills Required
+
+                            </h4>
+
+                            {% for skill in career.skills %}
+
+                            <span class="badge bg-primary m-1 p-2">
+
+                                {{ skill }}
+
+                            </span>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <!-- Courses Salary Scope -->
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-body">
+
+                            <h4>
+
+                                📚 Recommended Courses
+
+                            </h4>
+
+                            <ul>
+
+                                {% for course in career.courses %}
+
+                                <li>{{ course }}</li>
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="card bg-success text-white shadow">
+
+                        <div class="card-body text-center">
+
+                            <h4>
+
+                                💰 Salary
+
+                            </h4>
+
+                            <h5>
+
+                                {{ career.salary }}
+
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="card bg-info text-white shadow">
+
+                        <div class="card-body text-center">
+
+                            <h4>
+
+                                🚀 Future Scope
+
+                            </h4>
+
+                            <h5>
+
+                                {{ career.future_scope }}
+
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <!-- Chart -->
+
+            <h3 class="text-center mb-4">
+
+                📊 Personality & Aptitude Analysis
+
+            </h3>
+
+            <canvas id="scoreChart"></canvas>
+
+            <hr class="my-5">
+
+            <!-- Strengths -->
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card border-success">
+
+                        <div class="card-header bg-success text-white">
+
+                            ⭐ Your Strongest Areas
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                {% for key, value in feature_scores.items %}
+
+                                {% if value >= 4 %}
+
+                                <li>
+
+                                    <strong>{{ key }}</strong>
+
+                                    ({{ value }})
+
+                                </li>
+
+                                {% endif %}
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card border-warning">
+
+                        <div class="card-header bg-warning">
+
+                            📈 Areas to Improve
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                {% for key, value in feature_scores.items %}
+
+                                {% if value < 3 %}
+
+                                <li>
+
+                                    <strong>{{ key }}</strong>
+
+                                    ({{ value }})
+
+                                </li>
+
+                                {% endif %}
+
+                                {% endfor %}
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
-<div class="card-body">
+<!-- Chart.js -->
 
-<h3 class="text-center">
+<script>
 
-Recommended Domain
+const ctx = document.getElementById('scoreChart');
 
-</h3>
+new Chart(ctx, {
 
-<h2 class="text-center text-primary">
+    type: 'bar',
 
-{{ category }}
+    data: {
 
-</h2>
+        labels: [
 
-<h4 class="text-center">
+            'Openness',
 
-Match Score
+            'Conscientiousness',
 
-{{ confidence }}%
+            'Extraversion',
 
-</h4>
+            'Agreeableness',
 
-<hr>
+            'Neuroticism',
 
-<h4>🏆 Top Careers</h4>
+            'Numerical',
 
-<ul>
+            'Spatial',
 
-{% for item in career.top_careers %}
+            'Perceptual',
 
-<li>{{ item }}</li>
+            'Abstract',
 
-{% endfor %}
+            'Verbal'
 
-</ul>
+        ],
 
-<hr>
+        datasets: [{
 
-<h4>💻 Skills Required</h4>
+            label: 'Score',
 
-<ul>
+            data: [
 
-{% for skill in career.skills %}
+                {{ feature_scores.Openness }},
 
-<li>{{ skill }}</li>
+                {{ feature_scores.Conscientiousness }},
 
-{% endfor %}
+                {{ feature_scores.Extraversion }},
 
-</ul>
+                {{ feature_scores.Agreeableness }},
 
-<hr>
+                {{ feature_scores.Neuroticism }},
 
-<h4>📚 Recommended Courses</h4>
+                {{ feature_scores.Numerical }},
 
-<ul>
+                {{ feature_scores.Spatial }},
 
-{% for course in career.courses %}
+                {{ feature_scores.Perceptual }},
 
-<li>{{ course }}</li>
+                {{ feature_scores.Abstract }},
 
-{% endfor %}
+                {{ feature_scores.Verbal }}
 
-</ul>
+            ]
 
-<hr>
+        }]
 
-<h4>💰 Average Salary</h4>
+    },
 
-<p>{{ career.salary }}</p>
+    options: {
 
-<hr>
+        responsive: true,
 
-<h4>🚀 Future Scope</h4>
+        plugins: {
 
-<p>{{ career.future_scope }}</p>
+            legend: {
 
-</div>
+                display: false
 
-</div>
+            }
 
-</div>
+        },
+
+        scales: {
+
+            y: {
+
+                beginAtZero: true,
+
+                max: 5
+
+            }
+
+        }
+
+    }
+
+});
+
+</script>
 
 {% endblock %}

@@ -1,0 +1,56 @@
+body{
+    background:#f5f7fb;
+}
+
+.report-card{
+    border:none;
+    border-radius:18px;
+    box-shadow:0px 10px 25px rgba(0,0,0,.12);
+}
+
+.section-title{
+    font-weight:bold;
+    color:#0d6efd;
+}
+
+.domain{
+    font-size:40px;
+    font-weight:bold;
+}
+
+.progress{
+    height:30px;
+    border-radius:20px;
+}
+
+.card-title{
+    font-weight:bold;
+}
+
+.list-group-item{
+    border:none;
+}
+
+.badge-skill{
+    margin:4px;
+    padding:10px 15px;
+    font-size:15px;
+}
+
+.salary-box{
+    background:#198754;
+    color:white;
+    padding:15px;
+    border-radius:12px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.scope-box{
+    background:#0dcaf0;
+    color:white;
+    padding:15px;
+    border-radius:12px;
+    font-size:22px;
+    font-weight:bold;
+}

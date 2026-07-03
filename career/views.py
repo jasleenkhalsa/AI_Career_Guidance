@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from .forms import StudentForm
+from .models import Student
+
 from .ml.predict import predict
 from .career_data import CAREER_DATABASE
 
@@ -7,10 +11,6 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
-
-from .forms import StudentForm
-
-from django.shortcuts import redirect
 
 
 def register(request):
@@ -34,10 +34,6 @@ def register(request):
 
     return render(request, 'register.html', {'form': form})
 
-from .models import Student
-
-from django.shortcuts import render, redirect
-from .models import Student
 
 def login(request):
     if request.method == "POST":
@@ -71,8 +67,6 @@ def questionnaire(request):
 
     return render(request,'questionnaire.html')
 
-from django.shortcuts import render
-from .ml.predict import predict
 
 def result(request):
 
@@ -108,57 +102,32 @@ def result(request):
         # Fetch career details
         career_info = CAREER_DATABASE.get(category)
 
+        # Feature scores for chart
+        feature_scores = {
+            "Openness": features[0],
+            "Conscientiousness": features[1],
+            "Extraversion": features[2],
+            "Agreeableness": features[3],
+            "Neuroticism": features[4],
+            "Numerical": features[5],
+            "Spatial": features[6],
+            "Perceptual": features[7],
+            "Abstract": features[8],
+            "Verbal": features[9],
+        }
+
         return render(
             request,
             "result.html",
             {
                 "category": category,
                 "confidence": confidence,
-                "career": career_info
+                "career": career_info,
+                "feature_scores": feature_scores,
             }
         )
 
-    return render(request, "result.html")
-    if request.method == "POST":
-
-        # Read all answers
-        answers = []
-
-        for i in range(1, 31):
-            answers.append(int(request.POST.get(f"q{i}", 3)))
-
-        # Convert 30 answers into 10 features
-        features = [
-
-            sum(answers[0:3]) / 3,
-            sum(answers[3:6]) / 3,
-            sum(answers[6:9]) / 3,
-            sum(answers[9:12]) / 3,
-            sum(answers[12:15]) / 3,
-            sum(answers[15:18]) / 3,
-            sum(answers[18:21]) / 3,
-            sum(answers[21:24]) / 3,
-            sum(answers[24:27]) / 3,
-            sum(answers[27:30]) / 3
-
-        ]
-
-        # AI Prediction
-        category, probability = predict(features)
-
-        confidence = round(max(probability) * 100, 2)
-
-        return render(
-            request,
-            "result.html",
-            {
-                "category": category,
-                "confidence": confidence
-            }
-        )
-
-    return render(request, "result.html")
-
+    return redirect("/questionnaire/")
 
 def contact(request):
     return render(request, 'contact.html')
@@ -168,4 +137,3 @@ def logout(request):
     request.session.flush()
 
     return redirect('/login/')
-
