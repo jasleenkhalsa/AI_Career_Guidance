@@ -15,6 +15,13 @@
             </div>
 
             <div class="card-body">
+            
+            {% if error %}
+            <div class="alert alert-danger">
+               {{ error }}
+            </div>
+            {% endif %}
+            
 
                 <form method="POST">
 

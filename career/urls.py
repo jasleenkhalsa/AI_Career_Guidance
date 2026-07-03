@@ -17,4 +17,5 @@ urlpatterns = [
 
     path('contact/', views.contact, name='contact'),
 
+    path('logout/',views.logout,name='logout'),
 ]
